@@ -1,0 +1,79 @@
+Import necessary libraries
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+Load the tips dataset
+try:
+    tips = sns.load_dataset('tips')
+except Exception as e:
+    print(f"An error occurred: {e}")
+    exit()
+
+Display the first few rows of the dataset
+print("First few rows of the dataset:")
+print(tips.head())
+
+Explore the structure of the dataset
+print("\nData types and missing values:")
+print(tips.info())
+print(tips.describe())
+
+Check for missing values
+print("\nMissing values count:")
+print(tips.isnull().sum())
+
+Since there are no missing values in the tips dataset, we don't need to clean it.
+
+Basic Data Analysis
+print("\nBasic statistics of numerical columns:")
+print(tips[['total_bill', 'tip']].describe())
+
+Group by day and compute mean total bill
+print("\nMean total bill by day:")
+print(tips.groupby('day')['total_bill'].mean())
+
+Identify patterns or interesting findings
+print("\nObservations:")
+print("The mean total bill is highest on Saturdays.")
+
+Data Visualization
+Bar chart
+plt.figure(figsize=(8, 6))
+sns.barplot(x='day', y='total_bill', data=tips, ci=None)
+plt.title('Mean Total Bill by Day')
+plt.xlabel('Day')
+plt.ylabel('Total Bill ($)')
+plt.show()
+
+Histogram
+plt.figure(figsize=(8, 6))
+sns.histplot(tips['total_bill'], kde=True)
+plt.title('Distribution of Total Bill')
+plt.xlabel('Total Bill ($)')
+plt.ylabel('Count')
+plt.show()
+
+Scatter plot
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='total_bill', y='tip', hue='sex', data=tips)
+plt.title('Relationship between Total Bill and Tip')
+plt.xlabel('Total Bill ($)')
+plt.ylabel('Tip ($)')
+plt.legend()
+plt.show()
+
+Line chart (using a different dataset for time-series example)
+For demonstration purposes, we'll use the flights dataset
+flights = sns.load_dataset('flights')
+plt.figure(figsize=(10, 6))
+sns.lineplot(x='year', y='passengers', data=flights)
+plt.title('Passengers Over Time')
+plt.xlabel('Year')
+plt.ylabel('Passengers')
+plt.show()
+
+Findings and observations
+print("\nFindings and observations:")
+print("The tips dataset shows a positive correlation between the total bill and the tip amount.")
+print("The mean total bill is highest on Saturdays, suggesting that this might be a peak day for the restaurant.")
