@@ -1,5 +1,5 @@
 
-# 📊 COVID-19 Global Data Tracker - Final Year Project
+# 📊 COVID-19 Global Data Tracker - Final Project
 
 ## 🧾 Project Description
 This Jupyter Notebook tracks and analyzes the global spread of COVID-19 using real-world data. The notebook performs data cleaning, analysis, and visualization of trends in infections, deaths, and vaccinations.
